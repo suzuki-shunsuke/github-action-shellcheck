@@ -1,0 +1,13 @@
+name: shellcheck
+description: shellcheck action
+inputs:
+  github_token:
+    description: 'GitHub Access Token'
+    required: true
+runs:
+  using: composite
+  steps:
+    - run: bash ${{ github.action_path }}/main.sh
+      shell: bash
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ inputs.github_token }}
