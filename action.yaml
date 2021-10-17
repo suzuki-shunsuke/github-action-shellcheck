@@ -3,7 +3,8 @@ description: shellcheck action
 inputs:
   github_token:
     description: 'GitHub Access Token'
-    required: true
+    required: false
+    default: ${{ github.token }}
 runs:
   using: composite
   steps:
