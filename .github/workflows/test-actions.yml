@@ -1,0 +1,26 @@
+---
+name: test-actions
+on:
+  push:
+    branches: [main]
+    tags: [v*]
+  pull_request:
+    branches: [main]
+jobs:
+  default:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - uses: int128/aqua-action@v1
+        with:
+          version: v0.7.9 # renovate: depName=suzuki-shunsuke/aqua
+      - uses: suzuki-shunsuke/github-action-shfmt@main
+        with:
+          github_token: ${{ steps.generate_token.outputs.token }}
+      - uses: ./
