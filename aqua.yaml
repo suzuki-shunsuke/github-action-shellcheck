@@ -4,6 +4,6 @@ registries:
 
 packages:
 - name: int128/ghcp@v1.13.0
-- name: koalaman/shellcheck@v0.7.2
+- name: koalaman/shellcheck@v0.8.0
 - name: mvdan/sh@v3.4.0
 - name: reviewdog/reviewdog@v0.13.0
