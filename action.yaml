@@ -41,10 +41,16 @@ runs:
         if [ "${{ github.event_name }}" = "pull_request" ]; then
           reporter=github-pr-review
         fi
-        git ls-files | grep -E "\.sh$" | xargs -r shellcheck --format=checkstyle |
-          reviewdog -f=checkstyle \
-            -name="shellcheck" \
-            -filter-mode=nofilter \
-            -reporter="$reporter" \
-            -level=warning \
-            -fail-on-error=1
+        tempfile=$(mktemp)
+        git ls-files | grep -E "\.sh$" > "$tempfile"
+        if [ -s "$tempfile" ]; then
+          cat "$tempfile" |
+            xargs shellcheck --format=checkstyle |
+              reviewdog -f=checkstyle \
+                -name="shellcheck" \
+                -filter-mode=nofilter \
+                -reporter="$reporter" \
+                -level=warning \
+                -fail-on-error=1
+        fi
+        rm "$tempfile"
