@@ -20,7 +20,4 @@ jobs:
       - uses: aquaproj/aqua-installer@v0.6.0
         with:
           aqua_version: v0.10.0
-      - uses: suzuki-shunsuke/github-action-shfmt@main
-        with:
-          github_token: ${{ steps.generate_token.outputs.token }}
       - uses: ./
