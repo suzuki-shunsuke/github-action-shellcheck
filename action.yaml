@@ -41,7 +41,7 @@ runs:
         if [ "${{ github.event_name }}" = "pull_request" ]; then
           reporter=github-pr-review
         fi
-        git ls-files | grep -E "\.sh$" | xargs shellcheck --format=checkstyle |
+        git ls-files | grep -E "\.sh$" | xargs -r shellcheck --format=checkstyle |
           reviewdog -f=checkstyle \
             -name="shellcheck" \
             -filter-mode=nofilter \
