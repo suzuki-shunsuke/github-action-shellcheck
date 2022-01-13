@@ -42,7 +42,7 @@ runs:
           reporter=github-pr-review
         fi
         tempfile=$(mktemp)
-        git ls-files | grep -E "\.sh$" > "$tempfile"
+        git ls-files | { grep -E "\.sh$" > "$tempfile" || :; }
         if [ -s "$tempfile" ]; then
           cat "$tempfile" |
             xargs shellcheck --format=checkstyle |
