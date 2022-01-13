@@ -5,6 +5,7 @@ registries:
   ref: v0.14.0 # renovate: depName=aquaproj/aqua-registry
 
 packages:
+- import: aqua/*.yaml
 - name: int128/ghcp@v1.13.0
 - name: koalaman/shellcheck@v0.8.0
 - name: mvdan/sh@v3.4.2
