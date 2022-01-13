@@ -19,4 +19,4 @@ jobs:
     - uses: aquaproj/aqua-installer@v0.6.0
       with:
         aqua_version: v0.10.0
-    - uses: suzuki-shunsuke/github-action-actionlint@v0.1.1
+    - uses: suzuki-shunsuke/github-action-actionlint@v0.1.2
