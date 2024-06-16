@@ -6,6 +6,6 @@ registries:
 
 packages:
 - import: aqua/*.yaml
-- name: int128/ghcp@v1.13.2
+- name: int128/ghcp@v1.13.3
 - name: koalaman/shellcheck@v0.10.0
 - name: reviewdog/reviewdog@v0.17.5
