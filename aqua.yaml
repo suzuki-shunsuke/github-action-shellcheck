@@ -8,4 +8,4 @@ packages:
 - import: aqua/*.yaml
 - name: int128/ghcp@v1.13.3
 - name: koalaman/shellcheck@v0.10.0
-- name: reviewdog/reviewdog@v0.20.1
+- name: reviewdog/reviewdog@v0.20.2
