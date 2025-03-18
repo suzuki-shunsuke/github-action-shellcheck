@@ -1,15 +1,11 @@
 ---
 name: test-actions
-on:
-  push:
-    branches: [main]
-    tags: [v*]
-  pull_request:
-    branches: [main]
+on: pull_request
 jobs:
-  default:
+  test:
     timeout-minutes: 30
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-24.04
+    permissions: {}
     steps:
       - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
         with:
