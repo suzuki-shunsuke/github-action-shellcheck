@@ -16,4 +16,4 @@ jobs:
       - uses: ./
       - uses: ./
         with:
-          working_directory: aqua
+          working_directory: tests
