@@ -1,8 +1,21 @@
 ---
 name: test-actions
 on: pull_request
+permissions: {}
 jobs:
   test:
+    # Required status check of this workflow
+    runs-on: ubuntu-26.04
+    if: always() && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled'))
+    timeout-minutes: 10
+    permissions: {}
+    needs:
+      - test-action
+      - test-workflow
+    steps:
+      - run: exit 1
+
+  test-action:
     timeout-minutes: 30
     runs-on: ubuntu-26.04
     permissions: {}
@@ -17,3 +30,11 @@ jobs:
       - uses: ./
         with:
           working_directory: tests
+
+  test-workflow:
+    uses: suzuki-shunsuke/test-workflow/.github/workflows/test.yaml@0b89b9b4314282810bc944364380568708208eaa # v0.0.2
+    with:
+      aqua_version: v2.66.0
+    permissions:
+      contents: read
+      pull-requests: read
